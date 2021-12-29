@@ -10,7 +10,7 @@ set -eu
 
 PAGES_BRANCH="page"
 
-SITE_DIR="./_site"
+SITE_DIR="_site"
 
 _opt_dry_run=false
 
@@ -52,15 +52,7 @@ build() {
   fi
 
   # build
-  JEKYLL_ENV=pro bundle exec jekyll b -d "$SITE_DIR$_baseurl" --config "$_config"
-}
-
-test() {
-  bundle exec htmlproofer \
-    --disable-external \
-    --check-html \
-    --allow_hash_href \
-    "$SITE_DIR"
+  JEKYLL_ENV=product bundle exec jekyll b -d "$SITE_DIR$_baseurl" --config "$_config"
 }
 
 resume_site_dir() {
@@ -118,7 +110,6 @@ deploy() {
 main() {
   init
   build
-  test
   resume_site_dir
 
   if $_opt_dry_run; then
