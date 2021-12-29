@@ -47,6 +47,12 @@ highlighter: rouge
 kramdown:
   input: GFM
 
+defaults:
+  - scope:
+      path: "_posts" # an empty string here means all files in the project
+    values:
+      layout: "post"
+      render_with_liquid: false
 
 # exclude:
 #   - .sass-cache/

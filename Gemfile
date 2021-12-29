@@ -34,5 +34,3 @@ gem "webrick", "~> 1.7"
 gem "kramdown", "~> 2.3"
 
 gem "rouge", "~> 3.27"
-
-gem "html-proofer"

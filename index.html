@@ -8,15 +8,15 @@ layout: default
 <div class="archive">
     {% assign postsByYear = site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
     {% for year in postsByYear %}
-    <div class="archive-year">
+    <ul class="archive-year">
         <h2>{{ year.name }}</h2><hr>
         {% for post in year.items %}
-        <div class="archive-item">
+        <li class="archive-item">
             <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
             <span>{{ post.date | date: '%b %d' }}</span>
-        </div><br>
+        </li><br>
         {% endfor %}
-    </div>
+    </ul>
     {% endfor %}
 </div>
 
