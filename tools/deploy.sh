@@ -10,7 +10,7 @@ set -eu
 
 PAGES_BRANCH="page"
 
-SITE_DIR="_site"
+SITE_DIR="./_site"
 
 _opt_dry_run=false
 
