@@ -1,0 +1,6 @@
+- name: Home
+  link: /
+  icon: bi bi-house
+- name: About
+  link: /about/
+  icon: bi bi-info-square

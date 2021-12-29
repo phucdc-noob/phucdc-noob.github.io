@@ -1,0 +1,30 @@
+<div class="col-md-2 bg-dark vh-100 sticky-top sidebar text-center">
+    <div class="avatar">
+        <img src="https://github.com/FPTU-Ethical-Hackers-Club/FPTU-Ethical-Hackers-Club.github.io/raw/main/assets/img/avatar.png" class="rounded-circle" alt="">
+    </div> <br>
+    <h3 class="text-white text-center">{{ site.title }}</h3>
+    <hr class="text-white">
+    <div class="nav">
+        <ul>
+            {% for item in site.data.navigation %}
+           <li class="nav-item">
+                <a href="{{ item.link | relative_url }}"><i class="{{ item.icon }}"></i>{{ item.name }}</a>
+           </li> 
+           {% endfor %}
+        </ul>
+    </div>
+    <div class="nav contact">
+        <ul>
+            {% for item in site.data.info %}
+            <li class="nav-item">
+                <a href="{% if item.name == 'mail' %}mailto:{% endif %}{{ item.link }}">
+                    <i class="{{ item.icon }}"></i>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+
+    

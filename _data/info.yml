@@ -1,0 +1,15 @@
+- name: github 
+  link: https://github.com/phucdc-noob
+  icon: bi bi-github
+
+- name: twitter
+  link: https://twitter.com/PhucdcN
+  icon: bi bi-twitter
+
+- name: facebook
+  link: https://www.facebook.com/phuc.duongcong5545/
+  icon: bi bi-facebook
+
+- name: mail
+  link: phucbontu1012@gmail.com
+  icon: bi bi-envelope
