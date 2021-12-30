@@ -1,0 +1,30 @@
+{% assign enable_toc = false %}
+{% if site.toc and page.toc %}
+  {% if page.content contains '<h2' or page.content contains '<h3' %}
+    {% assign enable_toc = true %}
+  {% endif %}
+{% endif %}
+
+{% if enable_toc %}
+
+<div class="col-md-2 bg-black vh-100 sticky-top toc-container" > 
+  <span class="text-white">Content</span>
+  <div id="toc">
+
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+<script>
+  tocbot.init({
+    // Where to render the table of contents.
+    tocSelector: '#toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: '#post-content',
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: 'h2, h3, h4, h5, h6',
+    // For headings inside relative or absolute positioned containers within content.
+    hasInnerContainers: true,
+  });
+</script>
+
+{% endif %}

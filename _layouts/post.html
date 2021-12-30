@@ -2,11 +2,11 @@
 layout: default 
 --- 
 
-<div class="post">
+<div class="post" id="post">
     <h1>{{ page.title }}</h1>
     <span>{{ page.date | date: "%b %d, %y" }}</span>
     <hr>
-    <div>{{ content }}</div>
+    <div id="post-content">{{ content }}</div>
 </div>
 <script>
     var imgEl = document.getElementsByTagName('img');
