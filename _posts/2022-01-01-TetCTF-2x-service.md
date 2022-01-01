@@ -1,6 +1,6 @@
 ---
 title: TetCTF 2022 | Web Exploitation | 2X-Service
-date: 2022-01-01-19:33:00
+date: 2022-01-01-19:33:00 0700
 ---
 
 # 2X-Service
