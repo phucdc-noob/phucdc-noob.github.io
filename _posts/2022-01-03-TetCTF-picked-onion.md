@@ -1,6 +1,6 @@
 ---
 title: TetCTF 2022 | Web Exploitation | Picked onion
-date: 2022-01-03-15:17:00
+date: 2022-01-03-15:17:00 +0700
 ---
 
 # Picked onion
