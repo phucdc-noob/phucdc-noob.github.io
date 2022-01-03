@@ -1,5 +1,5 @@
 ---
-title: TetCTF 2022 | Web Exploitation | 2X-Service
+title: TetCTF 2022 | Web Exploitation | Picked onion
 date: 2022-01-03-15:17:00
 ---
 
