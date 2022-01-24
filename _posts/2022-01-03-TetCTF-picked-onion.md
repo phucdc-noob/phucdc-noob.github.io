@@ -40,7 +40,7 @@ Ban đầu khi đọc qua source code thì mình thấy nó giống hoàn toàn 
 
 ![fail_1](https://user-images.githubusercontent.com/82533607/147912969-f153ba6d-61a9-491f-8b65-1ee78a979c63.png)
 
-Có thể thấy, vấn đề ở đây là IAM User ddb_user mà ta ddnag sử dụng không có quyền hạn gì mấy để thực hiện exploit như bài viết ở trên.
+Có thể thấy, vấn đề ở đây là IAM User ddb_user mà ta đang sử dụng không có quyền hạn gì mấy để thực hiện exploit như bài viết ở trên.
 
 Sau một hồi lục lọi trên doc của AWS thì mình thấy điều này:
 
@@ -209,4 +209,4 @@ TetCTF{AssumE_R0le-iS-A-MuSt}
 
 Done, flag: `TetCTF{AssumE_R0le-iS-A-MuSt}`
 
-> Cảm ơn anh Chi Tran, đồng thời là người ra đề của chall này, đã cho em mượn IAM User và chỉ dẫn em trong quá trình giải, cũn như là học thêm kiến thức mới!
+> Cảm ơn anh Chi Tran, đồng thời là người ra đề của chall này, đã cho em mượn IAM User và chỉ dẫn em trong quá trình giải, cũng như là học thêm kiến thức mới!
