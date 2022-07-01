@@ -1,7 +1,7 @@
-'''
+---
 title: FTPU Hacking CTF | Web Writeup | EHC Hair Salon
 date: 2022-06-29 14h00 +0700
-'''
+---
 
 # FPTU Hacking CTF 2022
 
