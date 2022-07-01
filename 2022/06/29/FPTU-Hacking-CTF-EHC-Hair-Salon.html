@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>phucdc's Blog</title>
+<link
+    rel="stylesheet"
+    href="/assets/css/styles.css"
+/>
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link
+  rel="stylesheet"
+  href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 bg-dark vh-100 sticky-top sidebar text-center">
+    <div class="avatar">
+        <img id="avatar" src="/assets/avatar.png" class="rounded-circle" alt="">
+    </div> <br>
+    <h3 class="text-white text-center">phucdc's Blog</h3>
+    <hr class="text-white">
+    <div class="nav">
+        <ul>
+            
+           <li class="nav-item">
+                <a href="/"><i class="bi bi-house"></i>Home</a>
+           </li> 
+           
+           <li class="nav-item">
+                <a href="/about/"><i class="bi bi-info-square"></i>About</a>
+           </li> 
+           
+        </ul>
+    </div>
+    <div class="nav contact">
+        <ul>
+            
+            <li class="nav-item">
+                <a href="https://github.com/phucdc-noob">
+                    <i class="bi bi-github"></i>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="https://twitter.com/PhucdcN">
+                    <i class="bi bi-twitter"></i>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="https://www.facebook.com/phuc.duongcong5545/">
+                    <i class="bi bi-facebook"></i>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="mailto:phucbontu1012@gmail.com">
+                    <i class="bi bi-envelope"></i>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+            <div class="main col-md-8" id="main">
+                <div class="post" id="post">
+    <h1>FTPU Hacking CTF | Web Writeup | EHC Hair Salon</h1>
+    <span>Jun 29, 22</span>
+    <hr>
+    <div id="post-content"><h1 id="fptu-hacking-ctf-2022">FPTU Hacking CTF 2022</h1>
+
+<h2 id="web-exploitation-ehc-hair-salon">Web exploitation: EHC Hair Salon</h2>
+
+<blockquote>
+  <p>Thực ra bài này trong giải thì team K14LH của tôi không có làm được vì … Covid nên hơi oải (－_－) zzZ</p>
+</blockquote>
+
+<h3 id="-source-code">🧾 Source code</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template_string</span><span class="p">,</span> <span class="n">request</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+<span class="n">regex</span> <span class="o">=</span> <span class="s">"request|config|self|class|flag|0|1|2|3|4|5|6|7|8|9|</span><span class="se">\"</span><span class="s">|</span><span class="se">\'</span><span class="s">|</span><span class="se">\\</span><span class="s">|\~|\%|\#"</span>
+
+<span class="n">error_page</span> <span class="o">=</span> <span class="s">'''
+        {% extends "layout.html" %}
+        {% block body %}
+        &lt;center&gt;
+           &lt;section class="section"&gt;
+              &lt;div class="container"&gt;
+                 &lt;h1 class="title"&gt;Ông cháu à!&lt;/h1&gt;
+                 &lt;p&gt;Ông chú chỉ cắt được quả đầu Tommy Xiaomi thôi!&lt;/p&gt;
+              &lt;/div&gt;
+           &lt;/section&gt;
+        &lt;/center&gt;
+        {% endblock %}
+        '''</span>
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">'/'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">'GET'</span><span class="p">,</span> <span class="s">'POST'</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'POST'</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">request</span><span class="p">.</span><span class="n">form</span><span class="p">[</span><span class="s">'hair'</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">render_template_string</span><span class="p">(</span><span class="n">error_page</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="n">form</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">render_template_string</span><span class="p">(</span><span class="n">error_page</span><span class="p">)</span>
+
+        <span class="n">hair_type</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="n">form</span><span class="p">[</span><span class="s">'hair'</span><span class="p">].</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s">'{'</span> <span class="ow">in</span> <span class="n">hair_type</span> <span class="ow">and</span> <span class="n">re</span><span class="p">.</span><span class="n">search</span><span class="p">(</span><span class="n">regex</span><span class="p">,</span><span class="n">hair_type</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">render_template_string</span><span class="p">(</span><span class="n">error_page</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">hair_type</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">256</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">render_template_string</span><span class="p">(</span><span class="n">error_page</span><span class="p">)</span>
+
+        <span class="n">page</span> <span class="o">=</span> \
+            <span class="s">'''
+        {{% extends "layout.html" %}}
+        {{% block body %}}
+        &lt;center&gt;
+           &lt;section class="section"&gt;
+              &lt;div class="container"&gt;
+                 &lt;h1 class="title"&gt;Dậy đi ông cháu ơi, cắt xong rồi nhé!&lt;/h1&gt;
+                 &lt;ul class=flashes&gt;
+                    &lt;label&gt;Ông cháu có quả đầu {} thanh toán tiền cho chú nào &lt;3&lt;/label&gt;
+                 &lt;/ul&gt;
+                 &lt;/br&gt;
+              &lt;/div&gt;
+           &lt;/section&gt;
+           &lt;iframe width="560" height="315" src="https://v16m-webapp.tiktokcdn-us.com/2f678d478e2de26a048aaf4f3ed6d8bd/62b6f7f3/video/tos/useast2a/tos-useast2a-pve-0037-aiso/dd6e434a38e4447e83f61a684c31583b/?a=1988&amp;ch=0&amp;cr=0&amp;dr=0&amp;lr=tiktok&amp;cd=0%7C0%7C0%7C0&amp;br=1302&amp;bt=651&amp;cs=0&amp;ds=1&amp;ft=ebtHKHk_Myq8Z4IeUwe2NsE~fl7Gb&amp;mime_type=video_mp4&amp;qs=0&amp;rc=ZThoZWk7Zzw3PGQ1NmVnM0BpM3VsZWg6ZjhzZDMzZjgzM0AzLjIyYC8tX2AxYGFhMjVhYSNnMS9kcjQwMC1gLS1kL2Nzcw%3D%3D&amp;l=202206250556040100040040250040050060030180F0D3C2C" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+      &lt;/iframe&gt;
+        &lt;/center&gt;
+        {{% endblock %}}
+        '''</span><span class="p">.</span><span class="nb">format</span><span class="p">(</span><span class="n">hair_type</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">request</span><span class="p">.</span><span class="n">method</span> <span class="o">==</span> <span class="s">'GET'</span><span class="p">:</span>
+        <span class="n">page</span> <span class="o">=</span> \
+            <span class="s">'''
+        {% extends "layout.html" %}
+        {% block body %}
+        &lt;center&gt;
+            &lt;section class="section"&gt;
+              &lt;div class="container"&gt;
+                 &lt;h1 class="title"&gt;Chào mừng đến với &lt;a href="https://www.facebook.com/ehc.fptu"&gt;EHC Hair Salon&lt;/a&gt;, hôm nay ông cháu này muốn cắt quả đầu nào nhể?&lt;/h1&gt;
+                 &lt;p&gt;Nhập tên quả đầu mà ông cháu muốn cắt nha!&lt;/p&gt;
+                 &lt;form action='/' method='POST' align='center'&gt;
+                    &lt;p&gt;&lt;input name='hair' style='text-align: center;' type='text' placeholder='Tommy Xiaomi' /&gt;&lt;/p&gt;
+                    &lt;p&gt;&lt;input value='Submit' style='text-align: center;' type='submit' /&gt;&lt;/p&gt;
+                 &lt;/form&gt;
+              &lt;/div&gt;
+           &lt;/section&gt;
+        &lt;/center&gt;
+        {% endblock %}
+        '''</span>
+    <span class="k">return</span> <span class="n">render_template_string</span><span class="p">(</span><span class="n">page</span><span class="p">)</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="s">'0.0.0.0'</span><span class="p">,</span> <span class="mi">8000</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="-analysis">🔎 Analysis</h3>
+
+<p>Thứ nhất, ta biết đây là một SSTI challenge thông qua dòng 37-55.</p>
+
+<p>Blacklist tại dòng 5.</p>
+
+<p>Từ dòng 23-35, ta biết là ngoài việc phải bypass được blacklist, payload của chúng ta còn phải &lt;= 256 kí tự.</p>
+
+<p>Thông qua bài viết <a href="https://chowdera.com/2020/12/20201221231521371q.html">này</a>, tôi biết đến <code class="language-plaintext highlighter-rouge">lipsum</code>, một fuction gen ra đoạn văn mẫu huyền thoại của HTML: <strong><em>“Lorem ipsum”</em></strong></p>
+
+<p><img src="https://i.imgur.com/lNiclIJ.png" alt="" /></p>
+
+<p>May là không filter <code class="language-plaintext highlighter-rouge">_</code>, nên chúng ta hoàn toàn có thể gọi một số từ khoá như <code class="language-plaintext highlighter-rouge">__globals__</code> hay <code class="language-plaintext highlighter-rouge">__builtins__</code>:</p>
+
+<p><img src="https://i.imgur.com/SrPkQea.png" alt="" /></p>
+
+<p>Tôi để ý đến <code class="language-plaintext highlighter-rouge">os</code>, ta có thể gọi module này cho việc list file (vì hiện tại cũng chưa biết file flag nằm ở đâu, tên gì):</p>
+
+<p><img src="https://i.imgur.com/sva6jHW.png" alt="" /></p>
+
+<p>Trong list trả về lại thấy có file <code class="language-plaintext highlighter-rouge">flag</code>, đã vậy còn vừa hay nằm ở cuối list, sử dụng hàm <code class="language-plaintext highlighter-rouge">pop()</code> để lấy phần tử cuối này:</p>
+
+<p><img src="https://i.imgur.com/5TtMMTY.png" alt="" /></p>
+
+<p>Quay lại cái lúc thử <code class="language-plaintext highlighter-rouge">lipsum.__globals__</code>, tôi thấy có <code class="language-plaintext highlighter-rouge">open</code>, ban đầu tính dùng nó để gọi flag, nhưng khi gọi <code class="language-plaintext highlighter-rouge">lipsum.__globals__.open</code> thì có vẻ như không được như mong muốn:</p>
+
+<p><img src="https://i.imgur.com/S56heXc.png" alt="" /></p>
+
+<p>Đành tìm payload khác vậy, có một function khác, giống với <code class="language-plaintext highlighter-rouge">lipsum</code>, cũng đi kèm với Jinja2, <code class="language-plaintext highlighter-rouge">get_flashed_messages</code>:</p>
+
+<p><img src="https://i.imgur.com/l7zBVX5.png" alt="" /></p>
+
+<p>Chúng ta có thể gọi hàm <code class="language-plaintext highlighter-rouge">open</code> thông qua <code class="language-plaintext highlighter-rouge">get_flashed_messages</code> như sau:</p>
+
+<p><img src="https://i.imgur.com/X8SlCdM.png" alt="" /></p>
+
+<p>Như vậy, ta có payload cuối cùng:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{{</span> <span class="n">get_flashed_messages</span><span class="p">.</span><span class="n">__globals__</span><span class="p">.</span><span class="n">__builtins__</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="n">lipsum</span><span class="p">.</span><span class="n">__globals__</span><span class="p">.</span><span class="n">os</span><span class="p">.</span><span class="n">listdir</span><span class="p">().</span><span class="n">pop</span><span class="p">()).</span><span class="n">readline</span><span class="p">()</span> <span class="p">}}</span>
+</code></pre></div></div>
+
+<p><img src="https://i.imgur.com/qGGMt9P.png" alt="" /></p>
+
+<p>Flag: <code class="language-plaintext highlighter-rouge">FPTUHacking{d4y_d1_0ng_ch4u_0i,ban_da_thoat_khoi_EHC_hair_salon_roi}</code></p>
+
+<blockquote>
+  <p>Hơi tiếc, vì chỉ mất 30p là làm ra bài này rồi, mà hôm giải đang diễn ra thì cả team lại oải vì Covid quá nên đi ngủ hết cả (︶︹︺)
+Cảm ơn 0ni0n team vì dù có chút sự cố trong quá trình deploy và phải code vội challenge, nhưng ra được những đề chất lượng. Shout out to 0ni0n!</p>
+</blockquote>
+</div>
+</div>
+<script>
+    var imgEl = document.getElementsByTagName('img');
+    for (var i=0; i<imgEl.length; i++) {
+        if (imgEl[i].getAttribute('src') && imgEl[i].id != 'avatar') {
+        imgEl[i].setAttribute('data-src',imgEl[i].getAttribute('src'));
+        imgEl[i].removeAttribute('src'); //use only if you need to remove data-src attribute after setting src
+        }
+    }
+    $(function() {
+
+        const IMG_SCOPE = '.main .post';
+      
+        if ($(`${IMG_SCOPE} img`).length <= 0 ) {
+          return;
+        }
+      
+        /* lazy loading */
+      
+        const imgList = document.querySelectorAll(`${IMG_SCOPE} img[data-src]`);
+        const observer = lozad(imgList);
+        observer.observe();
+      
+        /* popup */
+      
+        $(`${IMG_SCOPE} p > img[data-src],${IMG_SCOPE} img[data-src].preview-img`).each(
+          function() {
+            let nextTag = $(this).next();
+            const title = nextTag.prop('tagName') === 'EM' ? nextTag.text() : '';
+            const src = $(this).attr('data-src'); // created by lozad.js
+      
+            $(this).wrap(`<a href="${src}" title="${title}" class="popup"></a>`);
+          }
+        );
+      
+        $('.popup').magnificPopup({
+          type: 'image',
+          closeOnContentClick: true,
+          showCloseBtn: false,
+          zoom: {
+            enabled: true,
+            duration: 300,
+            easing: 'ease-in-out'
+          }
+        });
+      
+        /* markup the image links */
+      
+        $(`${IMG_SCOPE} a`).has('img').addClass('img-link');
+      
+      });
+</script>
+            </div>
+            
+
+
+
+
+<div class="col-md-2 bg-black vh-100 sticky-top toc-container" > 
+  <span class="text-white">Content</span><br><br>
+  <div id="toc">
+
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+<script>
+  tocbot.init({
+    // Where to render the table of contents.
+    tocSelector: '#toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: '#post-content',
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: 'h2, h3, h4, h5, h6',
+    // For headings inside relative or absolute positioned containers within content.
+    hasInnerContainers: true,
+  });
+</script>
+
+
+        </div>
+    </div>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+          }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</body>
+</html>
+
+

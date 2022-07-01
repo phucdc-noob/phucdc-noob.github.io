@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>phucdc's Blog</title>
+<link
+    rel="stylesheet"
+    href="/assets/css/styles.css"
+/>
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link
+  rel="stylesheet"
+  href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 bg-dark vh-100 sticky-top sidebar text-center">
+    <div class="avatar">
+        <img id="avatar" src="/assets/avatar.png" class="rounded-circle" alt="">
+    </div> <br>
+    <h3 class="text-white text-center">phucdc's Blog</h3>
+    <hr class="text-white">
+    <div class="nav">
+        <ul>
+            
+           <li class="nav-item">
+                <a href="/"><i class="bi bi-house"></i>Home</a>
+           </li> 
+           
+           <li class="nav-item">
+                <a href="/about/"><i class="bi bi-info-square"></i>About</a>
+           </li> 
+           
+        </ul>
+    </div>
+    <div class="nav contact">
+        <ul>
+            
+            <li class="nav-item">
+                <a href="https://github.com/phucdc-noob">
+                    <i class="bi bi-github"></i>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="https://twitter.com/PhucdcN">
+                    <i class="bi bi-twitter"></i>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="https://www.facebook.com/phuc.duongcong5545/">
+                    <i class="bi bi-facebook"></i>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="mailto:phucbontu1012@gmail.com">
+                    <i class="bi bi-envelope"></i>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+            <div class="main col-md-8" id="main">
+                <div class="post" id="post">
+    <h1>Linux Basic Commands</h1>
+    <span>Feb 03, 22</span>
+    <hr>
+    <div id="post-content"><h1 id="basic-linux-commands">Basic linux commands</h1>
+
+<h2 id="pwd">pwd</h2>
+
+<p>Cái này tương đương với <code class="language-plaintext highlighter-rouge">echo $PWD</code>, hiển thị working-dir hiện tại:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153142051-48d5d926-4684-49f1-b462-fb63ade4f2e9.png" alt="image" /></p>
+
+<h2 id="ls">ls</h2>
+
+<p>Được sử dụng để list các file và thư mục con tại đường dẫn (path) cho trước.</p>
+
+<h3 id="1-syntax">1. Syntax:</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> &lt;options&gt; &lt;path&gt;
+</code></pre></div></div>
+
+<h3 id="2-example">2. Example:</h3>
+
+<p>Khi không được cung cấp path, <code class="language-plaintext highlighter-rouge">ls</code> sẽ sử dụng <code class="language-plaintext highlighter-rouge">$PWD</code> làm path:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153116545-99fdb6a5-ba48-40c0-a0cc-67d3beadb8ce.png" alt="image" /></p>
+
+<ul>
+  <li>
+    <p>Một số những options hay dùng:</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">-R</code>: recursive listing, list toàn bộ các file và thư mục con (tất cả, kể cả bên trong các thư mục con):</p>
+
+        <p><img src="https://user-images.githubusercontent.com/82533607/153116842-1da85ab6-ba81-40c3-bd7c-ae8555c71481.png" alt="image" /></p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">-l</code>: long list format, output đưa ra thêm các trường khác như phân quyền, size, …:</p>
+
+        <p><img src="https://user-images.githubusercontent.com/82533607/153140269-0a7671b9-925f-404c-ab8d-ea294cb1ee5e.png" alt="image" /></p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">-a</code>: show all, hiển thị tất cả (kể cả những thư mục hay file bị ẩn bằng dấu <code class="language-plaintext highlighter-rouge">.</code> ở đầu):</p>
+
+        <p><img src="https://user-images.githubusercontent.com/82533607/153140526-0dc6bd90-efb3-493a-aef6-5f06ea3d3869.png" alt="image" /></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Một số cách biểu diễn path:</p>
+
+    <ul>
+      <li>Full path: <code class="language-plaintext highlighter-rouge">/home/user/a/</code></li>
+      <li>Relative path: <code class="language-plaintext highlighter-rouge">~/</code> (thư mục home của user hiện tại), <code class="language-plaintext highlighter-rouge">../</code> (thư mục cha), <code class="language-plaintext highlighter-rouge">./</code> (thư mục hiện tại)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="cd">cd</h2>
+
+<p>Chuyển working dir đến một path khác.</p>
+
+<h3 id="1-syntax-1">1. Syntax</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> &lt;path&gt;
+</code></pre></div></div>
+
+<h3 id="2-example-1">2. Example</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">cd</code> sẽ chuyển đến thư mục home của user hiện tại, tương tự <code class="language-plaintext highlighter-rouge">cd ~</code> và <code class="language-plaintext highlighter-rouge">cd &lt;full path to home&gt;</code>:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153141274-ccdc019f-f247-4160-80a6-2e2a9962f032.png" alt="image" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">cd &lt;path&gt;</code> sẽ chuyển đến thư mục được chỉ định:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153141791-0459968f-d34b-4e86-8462-416836c01e74.png" alt="image" /></p>
+
+<h2 id="mkdir">mkdir</h2>
+
+<p>Tạo thư mục, đơn giản vậy thôi</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153144543-2279c0bb-29e6-49a6-80c3-5cbddc5844a0.png" alt="image" /></p>
+
+<h2 id="touch">touch</h2>
+
+<p>Tạo file trống</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153144763-880e3597-f273-4c77-8fb3-417fb2a5da96.png" alt="image" /></p>
+
+<h2 id="file">file</h2>
+
+<p>Kiểm tra file type:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153145295-3ed4bd16-10e1-472e-8f5e-084487a1385a.png" alt="image" /></p>
+
+<h2 id="find">find</h2>
+
+<p>Tìm file/folder trong một path nhất định, ví dụ như tìm file <code class="language-plaintext highlighter-rouge">flag.txt</code> trong thư mục <code class="language-plaintext highlighter-rouge">/etc</code> chẳng hạn &lt;(“)</p>
+
+<h3 id="1-syntax-2">1. Syntax</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find &lt;path&gt; &lt;options&gt; 
+</code></pre></div></div>
+
+<h3 id="2-example-2">2. Example</h3>
+
+<p>Tìm file với tên là test, xuất phát từ thư mục gốc</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find / <span class="nt">-type</span> f <span class="nt">-name</span> <span class="nb">test</span>
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153150347-20ebae47-1266-40b2-9ff4-9de46f0d7c3e.png" alt="image" /></p>
+
+<p>Tìm file với quyền xác định trong working directory hiện tại:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find ./ <span class="nt">-type</span> f <span class="nt">-perm</span> 777
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153156450-233761ab-3979-4cbd-9949-f2fe95ec46ef.png" alt="image" /></p>
+
+<p>Option <code class="language-plaintext highlighter-rouge">-type</code> còn có thể sử dụng <code class="language-plaintext highlighter-rouge">-type d</code> để tìm folder:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>find ./ <span class="nt">-type</span> d <span class="nt">-name</span> <span class="nb">test</span>
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153156837-0bc352b7-de57-439f-a16b-df4d9d425a06.png" alt="image" /></p>
+
+<h2 id="cat">cat</h2>
+
+<p>Đọc toàn bộ nội dung của file, kể cả những kí tự con người không đọc được:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153157472-82ca50eb-7676-4fe7-ae54-2fb0cb0c2a3d.png" alt="image" /></p>
+
+<h2 id="strings">strings</h2>
+
+<p>Khác với <code class="language-plaintext highlighter-rouge">cat</code>, <code class="language-plaintext highlighter-rouge">strings</code> đọc nội dung file con người có thể đọc được:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153157832-f15d60d6-530d-41de-a111-683e9698c7c2.png" alt="image" /></p>
+
+<h2 id="cp">cp</h2>
+
+<p>Copy file hoặc folder đến một path khác</p>
+
+<h3 id="1-syntax-3">1. Syntax</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> &lt;options&gt; &lt;path_to_target&gt; &lt;path_to_destination&gt;
+</code></pre></div></div>
+
+<h3 id="example">Example</h3>
+
+<p>Copy file test vào folder test_folder:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153159481-bbcc6526-cc02-4e6f-b7b0-dba81c6c800f.png" alt="image" /></p>
+
+<p>Copy thư mục thì cần option <code class="language-plaintext highlighter-rouge">-r</code>:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153159891-772ae28c-b080-41b4-824a-e836b357310f.png" alt="image" /></p>
+
+<h2 id="mv">mv</h2>
+
+<p>Move file hoặc folder đến một path khác</p>
+
+<h3 id="1-syntax-4">1. Syntax</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mv</span> &lt;option&gt; &lt;path_to_target&gt; &lt;path_to_destination&gt;
+</code></pre></div></div>
+
+<h3 id="2-example-3">2. Example</h3>
+
+<p>Move file <code class="language-plaintext highlighter-rouge">a.txt</code> sang folder <code class="language-plaintext highlighter-rouge">test</code>:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153161045-ddbe081b-d8ac-497a-b4b2-2515dd6527fd.png" alt="image" /></p>
+
+<p>Move folder <code class="language-plaintext highlighter-rouge">target</code> sang folder <code class="language-plaintext highlighter-rouge">test</code>:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153161257-be54d406-f584-46b5-8978-87e070035337.png" alt="image" /></p>
+
+<h2 id="rm">rm</h2>
+
+<p>Như cái tên, <code class="language-plaintext highlighter-rouge">rm</code> được sử dụng để xoá file hoặc folder</p>
+
+<h3 id="syntax">Syntax</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> &lt;options&gt; &lt;path_to_target&gt;
+</code></pre></div></div>
+
+<h3 id="example-1">Example</h3>
+
+<p>Ta thường sử dụng option <code class="language-plaintext highlighter-rouge">-f</code> để bắt buộc xoá, tránh trường hợp như thế này:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153171719-5a25578c-358b-4c95-ac38-bf497ff48626.png" alt="image" /></p>
+
+<p>Sử dụng option <code class="language-plaintext highlighter-rouge">-r</code> để xoá folder:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153171911-4d4c3af0-559e-4fd2-a734-22f6a0959679.png" alt="image" /></p>
+
+<h2 id="wget">wget</h2>
+
+<p>Sử dụng nhằm lấy dữ liệu về, có thể sử dụng với các giao thức <a href="https://www.comptia.org/content/guides/what-is-a-network-protocol">protocol</a> như HTTP, HTTPS, FTP, SFTP.</p>
+
+<h3 id="syntax-1">Syntax</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget &lt;options&gt; &lt;url&gt;
+</code></pre></div></div>
+
+<h3 id="example-2">Example</h3>
+
+<p>Đơn giản nhất, <code class="language-plaintext highlighter-rouge">wget</code> 1 file về, <code class="language-plaintext highlighter-rouge">wget</code> sẽ tự động lưu file ở working dir hiện tại</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153166128-0b2d8028-6104-43e0-b59e-eb0443b16e13.png" alt="image" /></p>
+
+<p>Để tải cùng một lúc nhiều URL, tạo 1 file text chứa các URL và <code class="language-plaintext highlighter-rouge">wget</code> với option <code class="language-plaintext highlighter-rouge">-i &lt;url_file&gt;</code>:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153166733-8ed52b98-6886-4c87-86bb-c82b47fabae2.png" alt="image" /></p>
+
+<p>Để lưu file tải về tại một thư mục nào đó, sử dụng <code class="language-plaintext highlighter-rouge">-P &lt;path&gt;</code> (tên file vẫn giữ nguyên):</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153167345-ccdf3b81-7e14-4724-8dbd-c42821f82aad.png" alt="image" /></p>
+
+<p>Để lưu file với cái tên khác, sử dụng <code class="language-plaintext highlighter-rouge">-O &lt;newname&gt;</code> (cái này có thể thay đổi cả path như ví dụ dưới):</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153167739-983cdef9-e02b-4dfb-92d7-9e7fb9ab4e4d.png" alt="image" /></p>
+
+<h2 id="curl">curl</h2>
+
+<p>Một công cụ cực hữu hiệu khi biết cách sử dụng, cũng tương tự như <code class="language-plaintext highlighter-rouge">wget</code>, nhưng cURL còn làm được nhiều thứ hơn thế, như là gửi các request header với các method khác nhau.</p>
+
+<p>cURL có thể hỗ trợ các giao thức sau: HTTP, HTTPS, IMAP, IMAPS, SMB, MBS, SFTP, GOPHER, LDAP, LDAPS, SCP, FTP, FTPS, TELNET, POP3, POP3S, SMTP, SMTPS.</p>
+
+<h3 id="syntax-2">Syntax</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="o">[</span>options] <span class="o">[</span>url]
+</code></pre></div></div>
+
+<h3 id="example-3">Example</h3>
+
+<ul>
+  <li>Sử dụng cURL để tải file với option <code class="language-plaintext highlighter-rouge">-o</code>:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-o</span> &lt;path/filename&gt; &lt;url&gt;
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153532532-ada6ec1b-e02a-49fd-aae8-cb83ed4bccf1.png" alt="image" /></p>
+
+<ul>
+  <li>Hoặc tải nhiều file cùng 1 lúc với <code class="language-plaintext highlighter-rouge">-O</code>:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-O</span> <span class="o">[</span>URL1] ... <span class="nt">-O</span> <span class="o">[</span>URLn]
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153532685-a2d29ee1-833e-4283-b94a-2b427dfab0b0.png" alt="image" /></p>
+
+<ul>
+  <li>Ngoài ra, khi đang tải file từ một URL nào đó nhưng bị gián đoạn (Ctrl C hoặc lỡ tay tắt terminal), thì có thể tiếp tục với <code class="language-plaintext highlighter-rouge">-C -</code>:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-C</span> - <span class="nt">-O</span> <span class="o">[</span>URL]
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>Sử dụng cURL để gửi các requests:</p>
+
+    <ul>
+      <li>Sử dụng option <code class="language-plaintext highlighter-rouge">-X</code> để xác định method cụ thể:</li>
+    </ul>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> <span class="o">[</span>GET/PUT/POST/DELETE/....] <span class="o">[</span>URL]
+</code></pre></div>    </div>
+
+    <ul>
+      <li>Sử dụng option <code class="language-plaintext highlighter-rouge">-H</code> để thêm các header cụ thể:</li>
+    </ul>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-H</span> <span class="o">[</span>header1] ... <span class="nt">-H</span> <span class="o">[</span>header n] <span class="o">[</span>URL]
+</code></pre></div>    </div>
+
+    <ul>
+      <li>Sử dụng option <code class="language-plaintext highlighter-rouge">-d</code> để gửi data:</li>
+    </ul>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-d</span> <span class="o">[</span>data] <span class="o">[</span>URL]
+</code></pre></div>    </div>
+
+    <ul>
+      <li>Ví dụ dưới đây là sự kết hợp của cả 3 options trên:</li>
+    </ul>
+
+    <p><img src="https://raw.githubusercontent.com/phucdc-noob/FUSec-Write-Ups/main/img/PRP201_6.png" alt="image" /></p>
+  </li>
+</ul>
+
+<h2 id="ifconfig">ifconfig</h2>
+
+<p>Viết tắt của “interface configuration” (cấu hình interface), hiểu rằng, interface ở đây chỉ các network interface của hệ thống</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153538521-630f8643-df81-4fcd-8c79-bf1b93f6ed74.png" alt="image" /></p>
+
+<p>Ta chú ý đến các cái tên trong output: <code class="language-plaintext highlighter-rouge">eth0</code> (ethernet), <code class="language-plaintext highlighter-rouge">lo</code> (loopback), <code class="language-plaintext highlighter-rouge">wlan0</code> (wifi), <code class="language-plaintext highlighter-rouge">tun0</code> (VPN)…</p>
+
+<p>Ở đây ta có các thông số của eth0 như:</p>
+
+<ul>
+  <li>
+    <p>MTU: 1500</p>
+  </li>
+  <li>
+    <p>IP: 172.17.0.2 (dòng <code class="language-plaintext highlighter-rouge">inet</code>)</p>
+  </li>
+</ul>
+
+<p>…</p>
+
+<p>Trong trường hợp đồng thời có cả <code class="language-plaintext highlighter-rouge">eth</code> và <code class="language-plaintext highlighter-rouge">wlan</code>, có thể lựa chọn sử dụng 1 trong 2 bằng <code class="language-plaintext highlighter-rouge">up</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ifconfig <span class="o">[</span>interface] up
+</code></pre></div></div>
+
+<p>Và tất nhiên, để disable một cái interface nào đó thì <code class="language-plaintext highlighter-rouge">down</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ifconfig <span class="o">[</span>interface] down
+</code></pre></div></div>
+
+<h2 id="grep">grep</h2>
+
+<p>Về cơ bản, grep giúp chúng ta tìm một đoạn văn bản trong file, nhưng khi thật sự tìm hiểu, đây là một chân trời mới (ít nhất tôi thấy vậy).</p>
+
+<h3 id="syntax-3">Syntax</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">grep</span> <span class="o">[</span>options] PATTERNS <span class="o">[</span>files]
+</code></pre></div></div>
+
+<h3 id="example-4">Example</h3>
+
+<ul>
+  <li>Tìm file trong thư mục hiện tại có nội dung chứa “hello”:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153550166-18d5883b-2907-4dae-ac47-28b121ee3759.png" alt="image" /></p>
+
+<ul>
+  <li>Sử dụng option <code class="language-plaintext highlighter-rouge">-R</code> để quét toàn bộ các thư mục con:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153550290-5bf3da61-9357-4601-afa0-23d6efeddce9.png" alt="image" /></p>
+
+<ul>
+  <li>Tìm kiếm case insensitive với <code class="language-plaintext highlighter-rouge">-i</code>:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153551080-38c1e5ec-0b92-43d5-bd7f-5190bbf7098a.png" alt="image" /></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">grep</code> với regex:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153551315-faf90a5f-a2c5-4239-b322-3a9433bbc7ee.png" alt="image" /></p>
+
+<ul>
+  <li>Tìm chính xác với <code class="language-plaintext highlighter-rouge">-w</code>:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153551628-e0acebbd-b34c-46af-be8c-f1569e9d1185.png" alt="image" /></p>
+
+<ul>
+  <li>Đếm số kết quả tìm được với <code class="language-plaintext highlighter-rouge">-c</code>:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153551783-30460038-b263-4851-9bf5-bed76412dba2.png" alt="image" /></p>
+
+<ul>
+  <li>Tìm kiếm ngược (không chứa từ hoặc những từ thoả mãn regex) với <code class="language-plaintext highlighter-rouge">-v</code>:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153551985-139d0e06-61fc-4a27-960f-8b0e14013a67.png" alt="image" /></p>
+
+<ul>
+  <li>Chỉ hiển thị tên file chứa chuỗi cần tìm với <code class="language-plaintext highlighter-rouge">-l</code>:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153552288-9e0d037b-bdb1-46aa-8cfa-b161c2329c0f.png" alt="image" /></p>
+
+<ul>
+  <li>Hiển thị số thứ tự các dòng kết quả với <code class="language-plaintext highlighter-rouge">-n</code>:</li>
+</ul>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153554903-7a749f5a-9b62-4619-b762-abab0292c43a.png" alt="image" /></p>
+
+<ul>
+  <li>Thêm số dòng hiển thị với <code class="language-plaintext highlighter-rouge">-A</code> (after), <code class="language-plaintext highlighter-rouge">-B</code> (before), <code class="language-plaintext highlighter-rouge">-C</code> (circle):</li>
+</ul>
+
+<blockquote>
+  <p>Ví dụ ở đây, tôi muốn tìm dòng chứa chuỗi “etium”, nhưng muốn kết quả in ra phải có cả 2 dòng dưới dòng kết quả</p>
+</blockquote>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153555492-1b515a82-7ec3-49aa-a027-beaefddc3c48.png" alt="image" /></p>
+
+<h2 id="sudo">sudo</h2>
+
+<blockquote>
+  <p>When you are not allowed do something, just “sudo” it!</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> <span class="o">[</span>options] <span class="o">[</span><span class="nb">command</span><span class="o">]</span>
+</code></pre></div></div>
+
+<p><em><strong>Lưu ý:</strong></em> muốn dùng <code class="language-plaintext highlighter-rouge">sudo</code> thì cần phải nằm trong group <code class="language-plaintext highlighter-rouge">wheel</code> hoặc <code class="language-plaintext highlighter-rouge">sudo</code> tuỳ từng Distro, nếu không sẽ như này:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153557023-9c675ef8-76cf-4c77-9f7a-0bc3aa7ed4c2.png" alt="image" /></p>
+
+<h2 id="su">su</h2>
+
+<p>Mượn quyền của User khác</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>su <span class="o">[</span>options] <span class="o">[</span>- | User | <span class="o">[</span>arguments]]
+</code></pre></div></div>
+
+<h3 id="example-5">Example</h3>
+
+<ul>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">su root</code> = <code class="language-plaintext highlighter-rouge">su</code> = <code class="language-plaintext highlighter-rouge">su -</code>, chuyển terminal sang của root</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">su &lt;user&gt;</code> chuyển terminal sang user khác</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">su -c &lt;command&gt;</code>: chạy command bằng quyền root</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">su &lt;user&gt; -c &lt;command&gt;</code>: chạy command bằng quyền của user được chỉ định</p>
+  </li>
+</ul>
+
+<h2 id="chmod">chmod</h2>
+
+<p>Vấn đề phức tạp nhất trong hệ thống, phân quyền.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chmod</span> <span class="o">[</span>options] <span class="o">[</span>mode] <span class="o">[</span>file]
+</code></pre></div></div>
+
+<p>Trước tiên, hãy nhìn vào output của <code class="language-plaintext highlighter-rouge">ls -l</code>:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153559447-88cee5bb-8800-4f38-b000-d774c590cdaf.png" alt="image" /></p>
+
+<p>Tại cột đầu tiên của output, có đoạn <code class="language-plaintext highlighter-rouge">-rw-rw-r--</code>, ta tách nó làm 4 đoạn:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>-</th>
+      <th>Is directory?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>rw-</td>
+      <td>Owner</td>
+    </tr>
+    <tr>
+      <td>rw-</td>
+      <td>Group</td>
+    </tr>
+    <tr>
+      <td>r–</td>
+      <td>Others</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Đây chính là phân quyền của file a.txt, từ đây ta thấy, Owner (bản thân user sở hữu nó) có quyền read-write, tưởng tự với các User trong Group của Owner, còn các User khác chỉ có quyền read</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>r</th>
+      <th>Read</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>w</td>
+      <td>Write</td>
+    </tr>
+    <tr>
+      <td>x</td>
+      <td>Excecute</td>
+    </tr>
+    <tr>
+      <td>-</td>
+      <td>Not set</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>=&gt; Chuỗi phân quyền gồm 10 kí tự, chia làm 4 cụm, với cụm đầu tiên chỉ có 2 giá trị <code class="language-plaintext highlighter-rouge">-</code>, hoặc <code class="language-plaintext highlighter-rouge">d</code> để biểu thị đối tượng đó có phải là directory, hay là file. Còn lại 3 cụm lần lượt là Owner - Group - Others, mỗi cụm này được cấu thành từ 3 kí tự <code class="language-plaintext highlighter-rouge">r</code>, <code class="language-plaintext highlighter-rouge">w</code>, <code class="language-plaintext highlighter-rouge">x</code> được sắp xếp theo thứ tự là <code class="language-plaintext highlighter-rouge">rwx</code>, nếu unset quyền nào, thì quyền đó sẽ bị thay thế bằng <code class="language-plaintext highlighter-rouge">-</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">chmod</code> thường được sử dụng với các giá trị số, biểu thị cho các quyền như sau:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153560612-b423690d-0420-4b19-a8dc-048871530a36.png" alt="image" /></p>
+
+<p>Cách để ghi nhớ thì ta gọi 1 là set, 0 là not set, như vậy, ví dụ với quyền read and write only, thì chuỗi quyền là <code class="language-plaintext highlighter-rouge">rw-</code>, tương đương với <code class="language-plaintext highlighter-rouge">110</code>, chuyển qua thập phân là <code class="language-plaintext highlighter-rouge">6</code>, tương tự, <code class="language-plaintext highlighter-rouge">rwx</code> -&gt; <code class="language-plaintext highlighter-rouge">111</code> = <code class="language-plaintext highlighter-rouge">7</code>.</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153564121-efadf8dc-617a-4a5f-9b6c-0a48077290e5.png" alt="image" /></p>
+
+<p>Có thể sử dụng option <code class="language-plaintext highlighter-rouge">-R</code> để set quyền cho tất cả những thứ nằm trong 1 thư mục:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/153565667-538b104f-8916-48b6-8533-bedbde1a2aae.png" alt="image" /></p>
+
+<h2 id="chown">chown</h2>
+
+<p>Cái này để set Owner và Group (Ownership) cho các file</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chown</span> <span class="o">[</span>options] <span class="o">[</span>Owner:[Group]] <span class="o">[</span>file]
+</code></pre></div></div>
+
+<h3 id="example-6">Example</h3>
+
+<ul>
+  <li>Set owner cho a.txt vào User <code class="language-plaintext highlighter-rouge">test</code></li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chown test </span>a.txt
+</code></pre></div></div>
+
+<ul>
+  <li>Set owner cho a.txt vào User <code class="language-plaintext highlighter-rouge">test</code> và Group <code class="language-plaintext highlighter-rouge">testg</code>:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chown test</span>:testg a.txt
+</code></pre></div></div>
+
+<ul>
+  <li>Set owner cho toàn bộ folder Docs và các subfolders, files bên trong:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chown</span> <span class="nt">-R</span> <span class="nb">test</span>:testg Docs/
+</code></pre></div></div>
+
+<h2 id="man">man</h2>
+
+<p><code class="language-plaintext highlighter-rouge">man</code> thực chất là một database chứa các mô tả cụ thể cho các câu lệnh.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>man <span class="o">[</span><span class="nb">command</span><span class="o">]</span>
+</code></pre></div></div>
+</div>
+</div>
+<script>
+    var imgEl = document.getElementsByTagName('img');
+    for (var i=0; i<imgEl.length; i++) {
+        if (imgEl[i].getAttribute('src') && imgEl[i].id != 'avatar') {
+        imgEl[i].setAttribute('data-src',imgEl[i].getAttribute('src'));
+        imgEl[i].removeAttribute('src'); //use only if you need to remove data-src attribute after setting src
+        }
+    }
+    $(function() {
+
+        const IMG_SCOPE = '.main .post';
+      
+        if ($(`${IMG_SCOPE} img`).length <= 0 ) {
+          return;
+        }
+      
+        /* lazy loading */
+      
+        const imgList = document.querySelectorAll(`${IMG_SCOPE} img[data-src]`);
+        const observer = lozad(imgList);
+        observer.observe();
+      
+        /* popup */
+      
+        $(`${IMG_SCOPE} p > img[data-src],${IMG_SCOPE} img[data-src].preview-img`).each(
+          function() {
+            let nextTag = $(this).next();
+            const title = nextTag.prop('tagName') === 'EM' ? nextTag.text() : '';
+            const src = $(this).attr('data-src'); // created by lozad.js
+      
+            $(this).wrap(`<a href="${src}" title="${title}" class="popup"></a>`);
+          }
+        );
+      
+        $('.popup').magnificPopup({
+          type: 'image',
+          closeOnContentClick: true,
+          showCloseBtn: false,
+          zoom: {
+            enabled: true,
+            duration: 300,
+            easing: 'ease-in-out'
+          }
+        });
+      
+        /* markup the image links */
+      
+        $(`${IMG_SCOPE} a`).has('img').addClass('img-link');
+      
+      });
+</script>
+            </div>
+            
+
+
+
+
+<div class="col-md-2 bg-black vh-100 sticky-top toc-container" > 
+  <span class="text-white">Content</span><br><br>
+  <div id="toc">
+
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+<script>
+  tocbot.init({
+    // Where to render the table of contents.
+    tocSelector: '#toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: '#post-content',
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: 'h2, h3, h4, h5, h6',
+    // For headings inside relative or absolute positioned containers within content.
+    hasInnerContainers: true,
+  });
+</script>
+
+
+        </div>
+    </div>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+          }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</body>
+</html>
+
+

