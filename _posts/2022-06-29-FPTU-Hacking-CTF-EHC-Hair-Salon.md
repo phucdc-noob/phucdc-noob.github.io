@@ -11,7 +11,7 @@ date: 2022-06-29 14h00 +0700
 
 ### 🧾 Source code
 
-```python=
+```python
 import re
 from flask import Flask, render_template_string, request
 
